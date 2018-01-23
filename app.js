@@ -11,16 +11,20 @@ new Vue({
 			let playerHP = this.playerHP;
 			let monsterHP = this.monsterHP;
 			let text = '';
+			let gameOver = false;
 			if(playerHP <= 0 && monsterHP > 0) {
 				text = 'You lose...';
+				gameOver = true;
 			}
 			else if(playerHP > 0 && monsterHP <= 0) {
 				text = 'You win!!';
+				gameOver = true;
 			}
-			else if(playerHP === 0 && playerHP === monsterHP) {
+			else if(playerHP <= 0 && monsterHP <= 0) {
 				text =  'Draw???';
+				gameOver = true;
 			}
-			if(text.length > 0) {
+			if(gameOver) {
 				if(confirm(text + ' Play again?')) {
 					this.reset();
 				}
